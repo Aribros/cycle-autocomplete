@@ -1,0 +1,36 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Andre Staltz",
+  "license": "MIT",
+  "dependencies": {
+    "@cycle/dom": "22.7.0",
+    "@cycle/jsonp": "7.1.0",
+    "@cycle/run": "5.4.0",
+    "@cycle/time": "0.20.0",
+    "immutable": "^3.7.4",
+    "tsify": "^5.0.1",
+    "typescript": "^3.9.7",
+    "xstream": "11.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-typescript": "^7.10.4",
+    "babel-plugin-transform-object-assign": "^6.3.13",
+    "babel-register": "^6.4.3",
+    "babelify": "10.0.0",
+    "browserify": "16.5.2",
+    "browserify-hmr": "^0.4.1",
+    "mkdirp": "1.0.4",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebrowserify": "mkdirp dist",
+    "browserify": "browserify src/main.ts -p tsify --noImplicitAny > dist/main.js",
+    "start": "npm install && npm run browserify && echo 'OPEN index.html IN YOUR BROWSER'",
+    "live": "watchify -p browserify-hmr src/main.ts  -o dist/main.js -p tsify --noImplicitAny "
+  }
+}
